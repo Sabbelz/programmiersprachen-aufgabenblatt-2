@@ -40,6 +40,38 @@ TEST_CASE("operator/=", "[/=]"){
   REQUIRE(b.x == 3.0f);
   REQUIRE(b.y == 2.0f);
 }
+TEST_CASE("operator+", "[+]"){
+  Vec2 a{3.0f, 5.0f};
+  Vec2 b{9.0f, 6.0f};
+  Vec2 c = a + b; 
+  REQUIRE(c.x == 12.0f);
+  REQUIRE(c.y == 11.0f);
+}
+TEST_CASE("operator-", "[-]"){
+  Vec2 a{3.0f, 5.0f};
+  Vec2 b{9.0f, 6.0f};
+  Vec2 c = a - b;
+  REQUIRE(c.x == -6.0f);
+  REQUIRE(c.y == -1.0f);
+}
+TEST_CASE("operator*", "[*]"){
+  float a = 3.0f;
+  Vec2 b{9.0f, 6.0f};
+  Vec2 c = b * a;
+  Vec2 d = a * b;
+  REQUIRE(c.x == 27.0f);
+  REQUIRE(c.y == 18.0f);
+  REQUIRE(d.x == 27.0f);
+  REQUIRE(d.y == 18.0f);
+}
+TEST_CASE("operator/", "[/]"){
+  float a = 3.0f;
+  Vec2 b{9.0f, 6.0f};
+  Vec2 c = b/a;
+  REQUIRE(c.x == 3.0f);
+  REQUIRE(c.y == 2.0f);
+}
+
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);
