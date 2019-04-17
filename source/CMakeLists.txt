@@ -12,12 +12,12 @@ target_link_libraries(example
   )
 add_dependencies(example glfw nanovg ${COPY_BINARY})
 
-add_executable(Vec2 vec2.cpp)
 
 # Build tests
 add_executable(tests
   glew.c
   tests.cpp
+  vec2.cpp
   )
 target_link_libraries(tests
   glfw
