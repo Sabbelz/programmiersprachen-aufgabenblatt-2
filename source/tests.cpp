@@ -104,6 +104,17 @@ TEST_CASE("MV_operator*", "[MV_*]"){
   REQUIRE(c.x == 2.0f);
   REQUIRE(c.y == 3.0f);
 }
+TEST_CASE("inverse", "[inv]"){
+  Mat2 a{1.0f,2.0f,-2.0f,1.0f};
+  REQUIRE(inverse(a).e_00 == 0.2f);
+  REQUIRE(inverse(a).e_01 == -0.4f);
+  REQUIRE(inverse(a).e_10 == 0.4f);
+  REQUIRE(inverse(a).e_11 == 0.2f);
+}
+TEST_CASE("M_det", "[det]"){
+  Mat2 a{1.0f,0.0f,0.0f,1.0f};
+  REQUIRE(a.det() == 1.0f);
+}
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);

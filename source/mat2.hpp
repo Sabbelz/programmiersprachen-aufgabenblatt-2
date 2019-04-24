@@ -13,7 +13,7 @@ struct Mat2 {
     float e_10 = 0.0f;
     float e_11 = 1.0f;
 
-    float det () const ;
+    float det () const;
     Mat2& operator*=(Mat2 const& m);
 
 };
