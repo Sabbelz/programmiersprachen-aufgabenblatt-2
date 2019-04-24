@@ -84,13 +84,26 @@ TEST_CASE("M_operator*=", "[M_*=]"){
 TEST_CASE("M_operator*", "[M_*]"){
   Mat2 a{1.0f,0.0f,0.0f,1.0f};
   Mat2 b{2.0f,3.0f,1.0f,1.0f};
-  Mat2 c = b * a;
+  Mat2 c = b*a;
   REQUIRE(c.e_00 == 2.0f);
   REQUIRE(c.e_01 == 3.0f);
   REQUIRE(c.e_10 == 1.0f);
   REQUIRE(c.e_11 == 1.0f);
 }
-
+TEST_CASE("VM_operator*", "[VM_*]"){
+  Mat2 a{1.0f,0.0f,0.0f,1.0f};
+  Vec2 b{2.0f, 3.0f};
+  Vec2 c = a * b;
+  REQUIRE(c.x == 2.0f);
+  REQUIRE(c.y == 3.0f);
+}
+TEST_CASE("MV_operator*", "[MV_*]"){
+  Mat2 a{1.0f,0.0f,0.0f,1.0f};
+  Vec2 b{2.0f, 3.0f};
+  Vec2 c = b * a;
+  REQUIRE(c.x == 2.0f);
+  REQUIRE(c.y == 3.0f);
+}
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);
