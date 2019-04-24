@@ -18,6 +18,7 @@ add_executable(tests
   glew.c
   tests.cpp
   vec2.cpp
+  mat2.cpp
   )
 target_link_libraries(tests
   glfw
