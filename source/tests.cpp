@@ -1,6 +1,7 @@
 #define CATCH_CONFIG_RUNNER
 #include <catch.hpp>
 #include "vec2.hpp"
+#include "mat2.hpp"
 
 
 TEST_CASE("niy", "[niy]"){
@@ -71,6 +72,22 @@ TEST_CASE("operator/", "[/]"){
   REQUIRE(c.x == 3.0f);
   REQUIRE(c.y == 2.0f);
 }
+TEST_CASE("M_operator*=", "[M_*=]"){
+  Mat2 a{1.0f,0.0f,0.0f,1.0f};
+  Mat2 b{2.0f,3.0f,1.0f,1.0f};
+  b*=a;
+  REQUIRE(b.e_00 == 2.0f);
+  REQUIRE(b.e_01 == 3.0f);
+  REQUIRE(b.e_10 == 1.0f);
+  REQUIRE(b.e_11 == 1.0f);
+}
+/*TEST_CASE("operator/", "[/]"){
+  float a = 3.0f;
+  Vec2 b{9.0f, 6.0f};
+  Vec2 c = b/a;
+  REQUIRE(c.x == 3.0f);
+  REQUIRE(c.y == 2.0f);
+}*/
 
 int main(int argc, char *argv[])
 {
