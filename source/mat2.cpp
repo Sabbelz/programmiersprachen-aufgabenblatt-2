@@ -39,3 +39,9 @@ Mat2 inverse (Mat2 const & m){
     temp.e_11 = adj * m.e_11;
     return temp;
 }
+Mat2 transpose (Mat2 const& m){
+    Mat2 temp{m};
+    temp.e_01 = m.e_10;
+    temp.e_10 = m.e_01;
+    return temp;
+}

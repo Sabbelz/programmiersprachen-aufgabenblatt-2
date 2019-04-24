@@ -115,6 +115,11 @@ TEST_CASE("M_det", "[det]"){
   Mat2 a{1.0f,0.0f,0.0f,1.0f};
   REQUIRE(a.det() == 1.0f);
 }
+TEST_CASE("M_transpose", "[trp]"){
+  Mat2 a{1.0f,2.0f,-2.0f,1.0f};
+  REQUIRE(transpose(a).e_01 == -2.0f);
+  REQUIRE(transpose(a).e_10 == 2.0f);
+}
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);
