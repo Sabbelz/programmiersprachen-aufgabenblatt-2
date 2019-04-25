@@ -1,0 +1,25 @@
+Aufgabe 2.7
+
+Datentransferobjekte (DTO)- reien Datenstrukturen
+besitzen keine (nennenswerte) Memberfunktionen
+werden von externen Funktionen genutzt
+
+EIN STRUCT KANN AUCH METHODEN UND KONSTRUKTOREN HABEN!
+
+struct sollte default-member initialisierung verwenden.
+
+für structs ->  struct Test{ int x = 0;};  Test t; (default-initialisierung), Test t{1} (funktioniert), Test t(1) (funktioniert nicht, kein solcher konstruktor vorhanden)
+
+aggregate initialisation geht nur, wenn struct keinen konstruktor hat.
+
+
+class
+
+private Daten (private:) (Membervariablen).
+im allgemeinen keine Getter und Setter
+Funktionen (memberfunktionen) arbeiten auf diesen Daten
+Dienste werden durch Objekte realisiert - Aufträge an Objekte geben!
+
+"class"
+
+class Circle {public:void draw(){...}}
