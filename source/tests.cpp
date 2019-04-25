@@ -123,10 +123,14 @@ TEST_CASE("M_transpose", "[trp]"){
 }
 TEST_CASE("rotate", "[rt]"){
   Vec2 a{0.0f,0.0f};
+  Vec2 b{1.0f,1.0f};
   Mat2 t = make_rotation_mat2(M_PI/2);
   Vec2 rr = a * t;
+  Vec2 resr = b * t;
   REQUIRE(rr.x == Approx(0.0f));
   REQUIRE(rr.y == Approx(0.0f));
+  REQUIRE(resr.x == Approx(-1.0f));
+  REQUIRE(resr.y == Approx(1.0f));
 }
 int main(int argc, char *argv[])
 {
