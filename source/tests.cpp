@@ -2,6 +2,7 @@
 #include <catch.hpp>
 #include "vec2.hpp"
 #include "mat2.hpp"
+#include "color.hpp"
 #include <cmath>
 
 
@@ -131,6 +132,17 @@ TEST_CASE("rotate", "[rt]"){
   REQUIRE(rr.y == Approx(0.0f));
   REQUIRE(resr.x == Approx(-1.0f));
   REQUIRE(resr.y == Approx(1.0f));
+}
+
+TEST_CASE("Color", "[clr]"){
+  Color clr;
+  Color blue{0.254901961f,0.4117647059f,0.8823529412f};
+  REQUIRE(clr.r == Approx(0.8627450980392157));
+  REQUIRE(clr.g == Approx(0.8627450980392157));
+  REQUIRE(clr.b == Approx(0.8627450980392157));
+  REQUIRE(blue.r == Approx(0.254901961));
+  REQUIRE(blue.g == Approx(0.4117647059));
+  REQUIRE(blue.b == Approx(0.8823529412));
 }
 int main(int argc, char *argv[])
 {
