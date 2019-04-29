@@ -1,21 +1,19 @@
 #ifndef RECTANGLE_HPP
 #define RECTANGLE_HPP
+#include "vec2.hpp"
+#include "color.hpp"
 
 class Rectangle{
     public:
-    /*float area() const;
-    float scope() const;
-    float diagonal() const;
-    void line_a(float line);
-    float line_a() const;
-    void line_b(float line);
-    float line_b() const;
-    */
+    Rectangle();
+    Rectangle(Vec2 min, Vec2 max, Color col);
+    float circumference() const;
 
     private:
 
-    float line_a;
-    float line_b;
+    Vec2 min_;
+    Vec2 max_;
+    Color col_;
 
 };
 
