@@ -17,3 +17,6 @@ float Circle::circumference() const{
     float u = 2*M_PI * radius_;
     return u;
 }
+void Circle::draw(Window const& w) const{
+
+}

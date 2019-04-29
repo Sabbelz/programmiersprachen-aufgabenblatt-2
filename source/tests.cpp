@@ -8,15 +8,6 @@
 #include "Rectangle.hpp"
 
 
-TEST_CASE("niy", "[niy]"){
-  Vec2 a;
-  Vec2 b{5.1f,-9.3f};
-  REQUIRE(a.x == 0.0f);
-  REQUIRE(a.y == 0.0f);
-  REQUIRE(b.x == 5.1f);
-  REQUIRE(b.y == -9.3f);
-}
-
 TEST_CASE("operator+=", "[+=]"){
   Vec2 a;
   Vec2 b{5.1f, -9.3f};
@@ -40,8 +31,10 @@ TEST_CASE("operator*=", "[*=]"){
 }
 TEST_CASE("operator/=", "[/=]"){
   float a = 3.0f;
+  float c = 0;
   Vec2 b{9.0f, 6.0f};
   b /= a;
+  b /= c;
   REQUIRE(b.x == 3.0f);
   REQUIRE(b.y == 2.0f);
 }
@@ -71,6 +64,7 @@ TEST_CASE("operator*", "[*]"){
 }
 TEST_CASE("operator/", "[/]"){
   float a = 3.0f;
+  float d = 0;
   Vec2 b{9.0f, 6.0f};
   Vec2 c = b/a;
   REQUIRE(c.x == 3.0f);
@@ -128,13 +122,17 @@ TEST_CASE("rotate", "[rt]"){
   Vec2 a{0.0f,0.0f};
   Vec2 b{1.0f,1.0f};
   Mat2 t = make_rotation_mat2(M_PI/2);
+  REQUIRE(t.e_00 == Approx(0.0f));
+  REQUIRE(t.e_01 == Approx(-1.0f));
+  REQUIRE(t.e_10 == Approx(1.0f));
+  REQUIRE(t.e_11 == Approx(0.0f));
 }
 TEST_CASE("Color", "[clr]"){
   Color clr;
   Color blue{0.254901961f,0.4117647059f,0.8823529412f};
-  REQUIRE(clr.r == Approx(0.8627450980392157));
-  REQUIRE(clr.g == Approx(0.8627450980392157));
-  REQUIRE(clr.b == Approx(0.8627450980392157));
+  REQUIRE(clr.r == Approx(0.5));
+  REQUIRE(clr.g == Approx(0.5));
+  REQUIRE(clr.b == Approx(0.5));
   REQUIRE(blue.r == Approx(0.254901961));
   REQUIRE(blue.g == Approx(0.4117647059));
   REQUIRE(blue.b == Approx(0.8823529412));
@@ -147,7 +145,9 @@ TEST_CASE("circumference_C", "[cfC]"){
 }
 TEST_CASE("circumference_R", "[cfR]"){
   Color clr;
-  Rectangle r;
+  Vec2 a {1.0f,0.0f};
+  Vec2 b {2.0f,0.0f};
+  Rectangle r{a, b, clr};
   float u = r.circumference();
   REQUIRE(u == 2);
 }

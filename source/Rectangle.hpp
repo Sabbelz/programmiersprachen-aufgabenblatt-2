@@ -2,12 +2,14 @@
 #define RECTANGLE_HPP
 #include "vec2.hpp"
 #include "color.hpp"
+#include "window.hpp"
 
 class Rectangle{
     public:
     Rectangle();
     Rectangle(Vec2 min, Vec2 max, Color col);
     float circumference() const;
+    void draw(Window const& w)const;
 
     private:
 

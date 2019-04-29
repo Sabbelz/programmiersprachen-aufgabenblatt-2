@@ -1,5 +1,5 @@
 #include "vec2.hpp"
-
+#include <iostream>
 Vec2& Vec2::operator+=(Vec2 const&  v){
     x += v.x;
     y += v.y;
@@ -16,6 +16,11 @@ Vec2& Vec2::operator*=(float v){
     return *this;
 }
 Vec2& Vec2::operator/=(float v){
+    if(v == 0){
+        Vec2 result{0,0};
+        std::cout << "Division mit 0 nicht möglich!\n";
+        return result;
+    }
     x /= v;
     y /= v;
     return *this;
