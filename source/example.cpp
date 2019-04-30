@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
   Rectangle rec_2{min, max, col};
   Circle cir{};
   Vec2 ctr{600.0f, 600.0f};
-  Color clr{153/255,50/255,204/155};
+  Color clr{153.0f/255.0f,50.0f/255.0f,204.0f/255.0f};
   Circle cir_2{150.0f, ctr, clr};
 
   while (!win.should_close()) {

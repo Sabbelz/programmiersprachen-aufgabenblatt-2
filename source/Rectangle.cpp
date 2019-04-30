@@ -31,8 +31,13 @@ void Rectangle::draw(Window const& w)const{
     w.draw_line(max_.x, min_.y, max_.x, max_.y, col_.r, col_.g, col_.b);
 }
 void Rectangle::draw(Window const& w, float thickness)const{
-    w.draw_line(min_.x, min_.y, max_.x, min_.y, col_.r, col_.g, col_.b, thickness);
-    w.draw_line(min_.x, max_.y, max_.x, max_.y, col_.r, col_.g, col_.b, thickness);
-    w.draw_line(min_.x, min_.y, min_.x, max_.y, col_.r, col_.g, col_.b, thickness);
-    w.draw_line(max_.x, min_.y, max_.x, max_.y, col_.r, col_.g, col_.b, thickness);
+    if (thickness > 0){
+        w.draw_line(min_.x, min_.y, max_.x, min_.y, col_.r, col_.g, col_.b, thickness);
+        w.draw_line(min_.x, max_.y, max_.x, max_.y, col_.r, col_.g, col_.b, thickness);
+        w.draw_line(min_.x, min_.y, min_.x, max_.y, col_.r, col_.g, col_.b, thickness);
+        w.draw_line(max_.x, min_.y, max_.x, max_.y, col_.r, col_.g, col_.b, thickness);
+    }
 }
+//bool Rectangle::is_inside(Vec2 const& p) const{
+
+//}

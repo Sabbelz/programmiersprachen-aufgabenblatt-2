@@ -152,6 +152,13 @@ TEST_CASE("circumference_R", "[cfR]"){
   float u = r.circumference();
   REQUIRE(u == 2);
 }
+TEST_CASE("is_inside_C", "[iiC]"){
+  Circle cir;
+  Vec2 a {250.0f,250.0f};
+  Vec2 b {450.0f,450.0f};
+  REQUIRE(cir.is_inside(a) == true);
+  REQUIRE(cir.is_inside(b) == false);
+}
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);
