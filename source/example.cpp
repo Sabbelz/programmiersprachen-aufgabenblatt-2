@@ -18,6 +18,7 @@ int main(int argc, char* argv[])
       win.close();
     }
     rec.draw(win);
+    cir.draw(win);
 
     bool left_pressed = win.get_mouse_button(GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS;
 

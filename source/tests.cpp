@@ -139,7 +139,8 @@ TEST_CASE("Color", "[clr]"){
 }
 TEST_CASE("circumference_C", "[cfC]"){
   Color clr;
-  Circle a(2, 1, clr);
+  Vec2 v{1,0};
+  Circle a(2, v, clr);
   float u = a.circumference();
   REQUIRE(u == Approx(12.566370614359173));
 }
