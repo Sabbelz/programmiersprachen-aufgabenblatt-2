@@ -27,3 +27,13 @@ void Circle::draw(Window const& w) const{
         sp = np;
     }
 }
+void Circle::draw(Window const& w, float thickness) const{
+    Vec2 sp{center_.x, center_.y - radius_};
+    for(int i = 0; i < 200; ++i){
+        float phi = ((2 * M_PI)/200);
+        Mat2 rm = make_rotation_mat2(phi);
+        Vec2 np = center_ + (rm * (sp - center_));
+        w.draw_line(sp.x, sp.y, np.x, np.y, col_.r,col_.g,col_.b, thickness);
+        sp = np;
+    }
+}

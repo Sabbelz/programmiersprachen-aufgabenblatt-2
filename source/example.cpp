@@ -11,14 +11,23 @@ int main(int argc, char* argv[])
 {
   Window win{std::make_pair(800,800)};
   Rectangle rec{};
+  Vec2 min{200.0f, 700.0f};
+  Vec2 max{400.0f, 600.0f};
+  Color col{0.0f, 0.9f, 0.5f};
+  Rectangle rec_2{min, max, col};
   Circle cir{};
+  Vec2 ctr{600.0f, 600.0f};
+  Color clr{153/255,50/255,204/155};
+  Circle cir_2{150.0f, ctr, clr};
 
   while (!win.should_close()) {
     if (win.get_key(GLFW_KEY_ESCAPE) == GLFW_PRESS) {
       win.close();
     }
     rec.draw(win);
+    rec_2.draw(win, 3.0);
     cir.draw(win);
+    cir_2.draw(win, 10.0f);
 
     bool left_pressed = win.get_mouse_button(GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS;
 
