@@ -17,6 +17,9 @@ int main(int argc, char* argv[])
   Vec2 max{400.0f, 700.0f};
   Vec2 ctr{600.0f, 600.0f};
   Vec2 ctr_2{300.0f, 300.0f};
+  Vec2 second{0.0f, -350.0f};
+  Vec2 minute{0.0f, -275.0f};
+  Vec2 hour{0.0f, -200.0f};
 
   Color col{0.0f, 0.9f, 0.5f};
   Color clr{153.0f/255.0f,50.0f/255.0f,204.0f/255.0f};
@@ -39,14 +42,35 @@ int main(int argc, char* argv[])
   circles.push_back(cir_3);
 
   while (!win.should_close()) {
+
+    float time = win.get_time();
+    float seconds = fmod(time,60);
+    float minutes = fmod((time/60),60);
+    float hours = fmod((time/3600),12);
+    float sec_degree = seconds * ((M_PI/180)*6);
+    float min_degree = minutes * ((M_PI/180)*6);
+    float h_degree = hours * ((M_PI/180)*30);
+    Mat2 sec_rot = make_rotation_mat2(sec_degree);
+    Mat2 min_rot = make_rotation_mat2(min_degree);
+    Mat2 h_rot = make_rotation_mat2(h_degree);
+
+    /*float startX, float startY,
+                float endX, float endY,
+                float r, float g, float b,
+                float thickness = 1.0*/
+    Vec2 sec_now = sec_rot * second;
+    Vec2 min_now = min_rot * minute;
+    Vec2 h_now = h_rot * hour;
+
+    win.draw_line(400.0f,400.0f, sec_now.x+400.0f, sec_now.y+400.0f, 1.0f,0.0f,0.0f);
+    win.draw_line(400.0f,400.0f, min_now.x+400.0f, min_now.y+400.0f, 0.0f,1.0f,0.0f);
+    win.draw_line(400.0f,400.0f, h_now.x+400.0f, h_now.y+400.0f, 0.0f,0.0f,1.0f);
+
+
+
     if (win.get_key(GLFW_KEY_ESCAPE) == GLFW_PRESS) {
       win.close();
     }
-    /*rec.draw(win);
-    rec_2.draw(win, 3.0);
-    cir.draw(win);
-    cir_2.draw(win, 10.0f);
-    cir_3.draw(win, col);*/
 
     for(Rectangle const& r: rectangles){
       if(r.is_inside({(float) std::get<0>(win.mouse_position()), (float) std::get<1>(win.mouse_position())})){ //cast auf float get<x> pos vom wert
