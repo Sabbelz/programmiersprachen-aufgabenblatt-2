@@ -5,29 +5,65 @@
 #include "Circle.hpp"
 #include "Rectangle.hpp"
 #include "color.hpp"
+#include <vector>
 
 
 int main(int argc, char* argv[])
 {
   Window win{std::make_pair(800,800)};
-  Rectangle rec{};
-  Vec2 min{200.0f, 700.0f};
-  Vec2 max{400.0f, 600.0f};
-  Color col{0.0f, 0.9f, 0.5f};
-  Rectangle rec_2{min, max, col};
-  Circle cir{};
+
+
+  Vec2 min{200.0f, 600.0f};
+  Vec2 max{400.0f, 700.0f};
   Vec2 ctr{600.0f, 600.0f};
+  Vec2 ctr_2{300.0f, 300.0f};
+
+  Color col{0.0f, 0.9f, 0.5f};
   Color clr{153.0f/255.0f,50.0f/255.0f,204.0f/255.0f};
+
+  Rectangle rec{};
+  Rectangle rec_2{min, max, clr};
+
+  Circle cir{};
   Circle cir_2{150.0f, ctr, clr};
+  Circle cir_3{50.0f, ctr_2, clr};
+
+  std::vector<Rectangle>rectangles;
+  std::vector<Circle>circles;
+
+  rectangles.push_back(rec);
+  rectangles.push_back(rec_2);
+
+  circles.push_back(cir);
+  circles.push_back(cir_2);
+  circles.push_back(cir_3);
 
   while (!win.should_close()) {
     if (win.get_key(GLFW_KEY_ESCAPE) == GLFW_PRESS) {
       win.close();
     }
-    rec.draw(win);
+    /*rec.draw(win);
     rec_2.draw(win, 3.0);
     cir.draw(win);
     cir_2.draw(win, 10.0f);
+    cir_3.draw(win, col);*/
+
+    for(Rectangle const& r: rectangles){
+      if(r.is_inside({(float) std::get<0>(win.mouse_position()), (float) std::get<1>(win.mouse_position())})){ //cast auf float get<x> pos vom wert
+        r.draw(win, col);
+      }
+      else{
+        r.draw(win);
+      }
+    }
+    for(Circle const& c: circles){
+      if(c.is_inside({(float) std::get<0>(win.mouse_position()), (float) std::get<1>(win.mouse_position())})){
+        c.draw(win, col);
+      }
+      else{
+        c.draw(win);
+      }
+    }
 
     bool left_pressed = win.get_mouse_button(GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS;
 

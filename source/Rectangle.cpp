@@ -3,8 +3,8 @@
 #include "color.hpp"
 
 Rectangle::Rectangle():
-    min_{500.0f,300.0f},
-    max_{400.0f,200.0f},
+    min_{300.0f,200.0f},
+    max_{500.0f,300.0f},
     col_{0.0f,0.0f,1.0f}
 {}
 Rectangle::Rectangle(Vec2 min, Vec2 max, Color col):
@@ -38,6 +38,22 @@ void Rectangle::draw(Window const& w, float thickness)const{
         w.draw_line(max_.x, min_.y, max_.x, max_.y, col_.r, col_.g, col_.b, thickness);
     }
 }
-//bool Rectangle::is_inside(Vec2 const& p) const{
-
-//}
+void Rectangle::draw(Window const& w, Color clr)const{
+    if(!(clr.r >= 0.0f && clr.g >= 0.0f && clr.b >= 0.0f && clr.r <= 1.0f && clr.g <= 1.0f && clr.b <= 1.0f)){
+        clr = {0.0f, 0.0f, 1.0f};
+    }
+    w.draw_line(min_.x, min_.y, max_.x, min_.y, clr.r, clr.g, clr.b);
+    w.draw_line(min_.x, max_.y, max_.x, max_.y, clr.r, clr.g, clr.b);
+    w.draw_line(min_.x, min_.y, min_.x, max_.y, clr.r, clr.g, clr.b);
+    w.draw_line(max_.x, min_.y, max_.x, max_.y, clr.r, clr.g, clr.b);
+}
+bool Rectangle::is_inside(Vec2 const& p) const{
+    if(p.x < max_.x && p.y < max_.y && p.x > min_.x && p.y > min_.y){
+        //std::cout << "Der angegebene Punkt liegt innerhalb des Objektes.\n";
+        return true;
+    }
+    else{
+        //std::cout << "Der angegebene Punkt liegt außerhalb des Objektes.\n";
+        return false;
+    }
+}

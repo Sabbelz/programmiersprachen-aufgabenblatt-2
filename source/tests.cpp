@@ -159,6 +159,13 @@ TEST_CASE("is_inside_C", "[iiC]"){
   REQUIRE(cir.is_inside(a) == true);
   REQUIRE(cir.is_inside(b) == false);
 }
+TEST_CASE("is_inside_R", "[iiR]"){
+  Rectangle rec;
+  Vec2 a {450.0f,250.0f};
+  Vec2 b {650.0f,650.0f};
+  REQUIRE(rec.is_inside(a) == true);
+  REQUIRE(rec.is_inside(b) == false);
+}
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);

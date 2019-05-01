@@ -3,6 +3,7 @@
 #include "vec2.hpp"
 #include "color.hpp"
 #include "window.hpp"
+#include <iostream>
 
 class Rectangle{
     public:
@@ -11,6 +12,7 @@ class Rectangle{
     float circumference() const;
     void draw(Window const& w)const;
     void draw(Window const& w, float thickness) const;
+    void draw(Window const& w, Color col) const;
     bool is_inside(Vec2 const& p) const;
 
     private:
